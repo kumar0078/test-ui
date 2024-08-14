@@ -1,45 +1,42 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="name">Name:</label>
-    <input id="name" formControlName="name" />
-    <div *ngIf="myForm.get('name')?.touched && myForm.get('name')?.invalid">
-      <div *ngIf="myForm.get('name')?.errors?.['required']">
-        Name is required
-      </div>
-      <div *ngIf="myForm.get('name')?.errors?.['minlength']">
-        Name must be at least 3 characters long
+<div style="text-align: center">
+  <h1>Reactive Form Example</h1>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <div
+        *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+      >
+        Name is required.
       </div>
     </div>
-  </div>
 
-  <div>
-    <label for="address">address:</label>
-    <input id="address" formControlName="address" />
-    <div
-      *ngIf="myForm.get('address')?.touched && myForm.get('address')?.invalid"
-    >
-      <div *ngIf="myForm.get('address')?.errors?.['required']">
-        address is required
-      </div>
-      <div *ngIf="myForm.get('address')?.errors?.['address']">
-        address must be a valid address address
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" />
+      <div
+        *ngIf="
+          userForm.get('address')?.invalid && userForm.get('address')?.touched
+        "
+      >
+        Address is required.
       </div>
     </div>
-  </div>
 
-  <div>
-    <label for="dateOfBirth">Date of Birth:</label>
-    <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
-    <div
-      *ngIf="
-        myForm.get('dateOfBirth')?.touched && myForm.get('dateOfBirth')?.invalid
-      "
-    >
-      <div *ngIf="myForm.get('dateOfBirth')?.errors?.['required']">
-        Date of Birth is required
+    <div>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input id="dateOfBirth" type="date" formControlName="dateOfBirth" />
+      <div
+        *ngIf="
+          userForm.get('dateOfBirth')?.invalid &&
+          userForm.get('dateOfBirth')?.touched
+        "
+      >
+        Date of Birth is required.
       </div>
     </div>
-  </div>
 
-  <button type="submit" [disabled]="myForm.invalid">Submit</button>
-</form>
+    <button type="submit">Submit</button>
+  </form>
+</div>

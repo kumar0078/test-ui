@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BackendServiceService {
-  private apiUrl = 'http://localhost:3000/test';
+  private apiUrl = 'http://localhost:5000';
   constructor(private http: HttpClient) {}
 
   addItem(item: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/items`, item);
+    return this.http.post<any>(`${this.apiUrl}/test`, item);
   }
 }
